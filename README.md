@@ -23,10 +23,11 @@ src/main
         
     resources/         
         data/          quest.json 
-        webapp/
-              script/
-              style/
-              template/
-              index.jsp
-              quest.jsp
+        
+    webapp/
+          script/
+          style/
+          template/
+          index.jsp
+          quest.jsp
 ```

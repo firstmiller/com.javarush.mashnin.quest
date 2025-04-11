@@ -20,10 +20,8 @@ src/main
         entity/        Answer, Question
         repository/    QuestionRepository
         service/       QuestionService
-        
     resources/         
         data/          quest.json 
-        
     webapp/
           script/
           style/

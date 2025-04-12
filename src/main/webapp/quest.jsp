@@ -28,7 +28,7 @@
         <%if (answerList.size() > 0) { %>
         <h2>${question.text}</h2>
         <h3>Варианты ответов:</h3>
-        <form class="answers-form" method="post" action="/quest">
+        <form class="answers-form" method="post" action="${pageContext.request.contextPath}/quest">
             <div class="options">
                 <c:forEach var="answer" items="${answerList}">
                     <div class="option">

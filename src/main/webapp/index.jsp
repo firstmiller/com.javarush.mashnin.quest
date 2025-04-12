@@ -34,7 +34,7 @@
             кампуса.
         </p>
         <%if (session.getAttribute("nickname") == null) { %>
-        <form class="legend__form" method="post" action="/quest">
+        <form class="legend__form" method="post" action="${pageContext.request.contextPath}/quest">
             <div class="login-block">
                 <label>Ваш Nickname</label>
                 <input type="text" minlength="5" required name="nickname">
@@ -42,7 +42,7 @@
             <button class="starting-button">Приступить!</button>
         </form>
         <%} else {%>
-        <form class="legend__form" method="get" action="/quest">
+        <form class="legend__form" method="get" action="${pageContext.request.contextPath}/quest">
             <button class="starting-button">Продолжить!</button>
         </form>
         <%}%>

@@ -1,6 +1,8 @@
 let context = document.getElementById("modal");
 let closeElement = document.querySelector(".modal__close");
 let header__stat = document.querySelector(".header__stat");
+const hostUrl = window.location.protocol + "//" + window.location.host;
+const questURL = hostUrl+ '/quest';
 
 context.addEventListener("click", e => {
     if (e.target === context || e.target === closeElement) {
@@ -15,7 +17,7 @@ header__stat.addEventListener("click", e => {
 })
 
 function removeSession() {
-    fetch('http://localhost:8092/quest', {
+    fetch(questURL, {
         method: 'DELETE',
     }).then(e => {
         location.href = "/quest";
@@ -27,13 +29,13 @@ function makeANewAttempt() {
 
     formData.append("isNewAttempt", "true");
 
-    fetch("/quest", {
+    fetch(questURL, {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
         },
         body: formData.toString()
     }).then(() => {
-        location.href = "/quest";
+        location.href = questURL;
     });
 }

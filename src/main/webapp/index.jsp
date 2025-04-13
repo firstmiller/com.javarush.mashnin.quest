@@ -12,8 +12,8 @@
     </style>
 </head>
 <body>
-<%@include file="/WEB-INF/template/modal.html" %>
-<%@include file="/WEB-INF/template/header.html" %>
+<%@include file="/WEB-INF/template/modal.jsp" %>
+<%@include file="/WEB-INF/template/header.jsp" %>
 <div class="container">
     <div class="content">
         <p>
@@ -46,11 +46,10 @@
             <button class="starting-button">Продолжить!</button>
         </form>
         <%}%>
-
     </div>
 </div>
-</body>
-<script>
+<script defer>
     <%@include file="/WEB-INF/script/script.js" %>
 </script>
+</body>
 </html>

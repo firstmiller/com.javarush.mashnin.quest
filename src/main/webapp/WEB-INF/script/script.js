@@ -1,8 +1,6 @@
 let context = document.getElementById("modal");
 let closeElement = document.querySelector(".modal__close");
 let header__stat = document.querySelector(".header__stat");
-const hostUrl = window.location.protocol + "//" + window.location.host;
-const questURL = hostUrl+ '/quest';
 
 context.addEventListener("click", e => {
     if (e.target === context || e.target === closeElement) {
@@ -12,30 +10,7 @@ context.addEventListener("click", e => {
 })
 
 header__stat.addEventListener("click", e => {
+    console.log("ОТкрытие модалки");
     context.classList.add("modal");
     context.classList.remove("modal_close")
 })
-
-function removeSession() {
-    fetch(questURL, {
-        method: 'DELETE',
-    }).then(e => {
-        location.href = "/quest";
-    })
-}
-
-function makeANewAttempt() {
-    const formData = new URLSearchParams();
-
-    formData.append("isNewAttempt", "true");
-
-    fetch(questURL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: formData.toString()
-    }).then(() => {
-        location.href = questURL;
-    });
-}

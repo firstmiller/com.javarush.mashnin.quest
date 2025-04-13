@@ -1,4 +1,5 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+
 <div class="modal_close" id="modal">
     <div class="modal__wrapper">
         <div class="modal__content">
@@ -12,7 +13,10 @@
                 <h3>Количество попыток: </h3>
                 <span><%=session.getAttribute("counter")%></span>
             </div>
-            <button class="starting-button " onclick="removeSession()">Сбросить статистику</button>
+            <form method="post" action="${pageContext.request.contextPath}/quest">
+                <input type="hidden" name="clearSession" value="true" />
+                <button type="submit" class="button__attempt">Сбросить сессию</button>
+            </form>
             <%} else {%>
             <h3>Для появления статистики начните игру</h3>
             <%}%>

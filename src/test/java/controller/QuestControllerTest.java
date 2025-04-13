@@ -36,7 +36,7 @@ class QuestControllerTest {
     void redirectIfNoNickname() throws IOException, ServletException {
         Mockito.when(httpSession.getAttribute("nickname")).thenReturn(null);
         questController.doGet(httpRequest, httpResponse);
-        Mockito.verify(httpResponse).sendRedirect("/");
+        Mockito.verify(httpResponse).sendRedirect(httpRequest.getContextPath() + "/");
     }
     @Test
     void defaultValuesSessionIfNoCurrentQuestion() throws ServletException, IOException {
@@ -56,9 +56,4 @@ class QuestControllerTest {
         Mockito.verify(httpSession).setAttribute(Mockito.eq("currentQuestion"), Mockito.anyLong());
     }
 
-    @Test
-    void doDelete() {
-        questController.doDelete(httpRequest, httpResponse);
-        Mockito.verify(httpSession).invalidate();
-    }
 }

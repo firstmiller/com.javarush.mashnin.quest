@@ -27,7 +27,7 @@ public class QuestController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         if (session.getAttribute("nickname") == null) {
-            resp.sendRedirect("/");
+            resp.sendRedirect(req.getContextPath() + "/");
             return;
         }
         if (session.getAttribute("currentQuestion") == null) {
@@ -48,23 +48,27 @@ public class QuestController extends HttpServlet {
             long answerID = Long.parseLong(req.getParameter("answer"));
             long nextQuestionID = questionService.getAnswerToQuestion(questionID, answerID).orElse(1L);
             session.setAttribute("currentQuestion", nextQuestionID);
+            resp.sendRedirect(req.getContextPath() + "/quest");
+            return;
         }
-
+        if(req.getParameter("clearSession") != null) {
+            req.getSession().invalidate();
+            resp.sendRedirect(req.getContextPath() + "/quest");
+            return;
+        }
         if (req.getParameter("isNewAttempt") != null) {
             session.setAttribute("currentQuestion", 1L);
             int lastCounter = (int) session.getAttribute("counter");
             session.setAttribute("counter", ++lastCounter);
+            resp.sendRedirect(req.getContextPath() + "/quest");
+            return;
         }
-
         if (req.getParameter("nickname") != null) {
             String nickname = req.getParameter("nickname");
             session.setAttribute("nickname", nickname);
+            resp.sendRedirect(req.getContextPath() + "/quest");
+            return;
         }
         resp.sendRedirect(req.getContextPath() + "/quest");
-    }
-
-    @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) {
-        req.getSession().invalidate();
     }
 }

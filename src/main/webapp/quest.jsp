@@ -21,8 +21,8 @@
     </style>
 </head>
 <body>
-<%@include file="/WEB-INF/template/modal.html" %>
-<%@include file="/WEB-INF/template/header.html" %>
+<%@include file="/WEB-INF/template/modal.jsp" %>
+<%@include file="/WEB-INF/template/header.jsp" %>
 <div class="container">
     <div class="content">
         <%if (answerList.size() > 0) { %>
@@ -41,12 +41,15 @@
         </form>
         <%} else {%>
         <h3>${question.text}</h3>
-        <button class="button__attempt" onclick="makeANewAttempt()">Начать новую попытку</button>
+        <form method="post" action="${pageContext.request.contextPath}/quest">
+            <input type="hidden" name="isNewAttempt" value="true" />
+            <button class="button__attempt">Начать новую попытку</button>
+        </form>
         <% }%>
     </div>
 </div>
-</body>
-<script>
+<script defer>
     <%@include file="/WEB-INF/script/script.js" %>
 </script>
+</body>
 </html>

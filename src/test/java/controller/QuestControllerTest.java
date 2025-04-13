@@ -55,5 +55,17 @@ class QuestControllerTest {
         questController.doPost(httpRequest, httpResponse);
         Mockito.verify(httpSession).setAttribute(Mockito.eq("currentQuestion"), Mockito.anyLong());
     }
-
+    @Test
+    void postClearSession() throws IOException {
+        Mockito.when(httpRequest.getParameter("clearSession")).thenReturn("true");
+        questController.doPost(httpRequest, httpResponse);
+        Mockito.verify(httpSession).invalidate();
+    }
+    @Test
+    void postNewAttempt() throws IOException {
+        Mockito.when(httpRequest.getParameter("isNewAttempt")).thenReturn("true");
+        Mockito.when(httpSession.getAttribute("counter")).thenReturn(0);
+        questController.doPost(httpRequest, httpResponse);
+        Mockito.verify(httpResponse).sendRedirect(httpRequest.getContextPath() + "/quest");
+    }
 }

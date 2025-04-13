@@ -25,7 +25,7 @@
 <%@include file="/WEB-INF/template/header.jsp" %>
 <div class="container">
     <div class="content">
-        <%if (answerList.size() > 0) { %>
+        <%if (!answerList.isEmpty()) { %>
         <h2>${question.text}</h2>
         <h3>Варианты ответов:</h3>
         <form class="answers-form" method="post" action="${pageContext.request.contextPath}/quest">
@@ -48,7 +48,7 @@
         <% }%>
     </div>
 </div>
-<script defer>
+<script>
     <%@include file="/WEB-INF/script/script.js" %>
 </script>
 </body>

@@ -10,6 +10,7 @@
     <style>
         <%@include file="/WEB-INF/style/style.css" %>
     </style>
+    <title>Главная</title>
 </head>
 <body>
 <%@include file="/WEB-INF/template/modal.jsp" %>
@@ -48,7 +49,7 @@
         <%}%>
     </div>
 </div>
-<script defer>
+<script>
     <%@include file="/WEB-INF/script/script.js" %>
 </script>
 </body>

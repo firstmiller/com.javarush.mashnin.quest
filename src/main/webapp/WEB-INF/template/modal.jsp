@@ -4,7 +4,7 @@
     <div class="modal__wrapper">
         <div class="modal__content">
             <h2>Статистика</h2>
-            <%if(session.getAttribute("nickname") != null) {%>
+            <%if (session.getAttribute("nickname") != null) {%>
             <div class="stat__block">
                 <h3>Ваш никнейм: </h3>
                 <span><%=session.getAttribute("nickname")%></span>
@@ -14,7 +14,7 @@
                 <span><%=session.getAttribute("counter")%></span>
             </div>
             <form method="post" action="${pageContext.request.contextPath}/quest">
-                <input type="hidden" name="clearSession" value="true" />
+                <input type="hidden" name="clearSession" value="true"/>
                 <button type="submit" class="button__attempt">Сбросить сессию</button>
             </form>
             <%} else {%>

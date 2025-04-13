@@ -7,7 +7,6 @@
 
 ## Запуск
 ### Tomcat 9
-### application context: /
 
 -------------------
 

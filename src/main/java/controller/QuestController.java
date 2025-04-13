@@ -36,7 +36,6 @@ public class QuestController extends HttpServlet {
         }
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("quest.jsp");
-        req.setAttribute("questionService", questionService);
         requestDispatcher.forward(req, resp);
     }
 
